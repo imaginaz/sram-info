@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S Ram Leisure Hotel | SEA Games Guest Information</title>
+
+  <style>
+    :root{
+      /* Color + tone inspired by your site screenshot */
+      --accent: #9BCB2E;        /* lime highlight */
+      --accent-dark: #7faa22;
+      --ink: #0d0f0f;
+      --ink-2: #141717;
+      --muted: #6b6f72;
+      --line: #e8eaec;
+      --soft: #f7f8f9;
+      --white: #ffffff;
+      --radius: 14px;
+      --shadow: 0 10px 28px rgba(0,0,0,0.08);
+      --maxw: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+    }
+    a{color: inherit}
+
+    /* =========================
+       TOP BAR (minimal)
+    ========================== */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+      padding: 14px 0;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      text-decoration:none;
+    }
+    .brand-mark{
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #cfe67c);
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      color: #0b0f0b;
+      letter-spacing: 1px;
+    }
+    .brand-text{
+      line-height: 1.1;
+    }
+    .brand-text .name{
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .3px;
+    }
+    .brand-text .sub{
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    .top-links{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .top-links a{
+      text-decoration:none;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #2a2f31;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+    .top-links a:hover{
+      border-bottom-color: #cdd2d6;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #0f1212;
+      color: white;
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .pill .dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display:inline-block;
+    }
+
+    /* =========================
+       HERO (new layout)
+    ========================== */
+    .hero{
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(155,203,46,0.10), transparent 60%),
+        radial-gradient(1000px 500px at 90% 0%, rgba(0,0,0,0.06), transparent 60%),
+        var(--soft);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-inner{
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+      padding: 48px 0 36px;
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items:center;
+    }
+    .kicker{
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3a3f42;
+      font-weight: 600;
+    }
+    .hero-title{
+      margin: 10px 0 10px;
+      font-size: clamp(28px, 3.8vw, 40px);
+      line-height: 1.15;
+    }
+    .hero-sub{
+      margin: 0 0 18px;
+      font-size: 15.5px;
+      color: #2c3133;
+      line-height: 1.5;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration:none;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-accent{
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 6px 16px rgba(155,203,46,0.28);
+    }
+    .btn-accent:hover{ background: var(--accent-dark); }
+    .btn-ghost{
+      background: white;
+      border-color: var(--line);
+      color: #202426;
+    }
+    .btn-ghost:hover{ border-color: #d9dde1; }
+
+    .hero-image{
+      position: relative;
+      min-height: 280px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
+        url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-image-badge{
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       QUICK CHIPS
+    ========================== */
+    .chips{
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+      padding: 0 0 34px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip{
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #202426;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+    .chip strong{ font-weight: 700; }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+    .section{
+      padding: 46px 0;
+    }
+    .container{
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+    }
+    .section-title{
+      font-size: clamp(20px, 2.6vw, 26px);
+      margin: 0 0 6px 0;
+    }
+    .section-sub{
+      margin: 0 0 22px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       INFO GRID (new structure)
+    ========================== */
+    .info-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .panel{
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .panel-head{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .panel-title{
+      font-size: 16px;
+      margin: 0;
+    }
+    .tag{
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f2f4f6;
+      color: #202426;
+    }
+
+    .rows{
+      display:grid;
+      gap: 10px;
+    }
+    .row{
+      display:flex;
+      justify-content: space-between;
+      align-items:flex-start;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #edf0f3;
+    }
+    .row:last-child{
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .label{
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      min-width: 120px;
+    }
+    .value{
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1b1f21;
+      text-align: right;
+    }
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       FACILITY STRIP (not a booking bar)
+    ========================== */
+    .facility-strip{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .facility-card{
+      background:
+        linear-gradient(135deg, rgba(155,203,46,0.08), transparent 40%),
+        white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .facility-card h4{
+      margin: 0 0 6px 0;
+      font-size: 16px;
+    }
+
+    /* =========================
+       WIFI CALLOUT
+    ========================== */
+    .wifi{
+      background:
+        linear-gradient(180deg, #0d1010, #0a0c0c);
+      color: white;
+      border-radius: calc(var(--radius) + 2px);
+      padding: 28px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items:center;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+    }
+    .wifi small{
+      display:block;
+      color: #cfd5d8;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 9px;
+      margin-bottom: 6px;
+    }
+    .wifi h3{
+      margin: 0 0 8px 0;
+      font-size: 20px;
+    }
+    .wifi p{
+      margin: 0;
+      font-size: 13.5px;
+      color: #d7dddf;
+      line-height: 1.5;
+    }
+    .wifi-box{
+      display:grid;
+      gap: 10px;
+    }
+    .wifi-field{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .wifi-field .f-label{
+      font-size: 9px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #cdd3d6;
+    }
+    .wifi-field .f-value{
+      margin-top: 4px;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer{
+      border-top: 1px solid var(--line);
+      background: #0b0d0d;
+      color: white;
+    }
+    .footer-inner{
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+      padding: 30px 0 42px;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+    }
+    .footer-inner p{
+      margin: 6px 0 0 0;
+      font-size: 12.5px;
+      color: #cfd5d8;
+      line-height: 1.5;
+    }
+    .footer-sign{
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 980px){
+      .hero-inner{
+        grid-template-columns: 1fr;
+      }
+      .wifi{
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 820px){
+      .info-grid,
+      .facility-strip{
+        grid-template-columns: 1fr;
+      }
+      .footer-inner{
+        grid-template-columns: 1fr;
+      }
+      .top-links{
+        display:none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <span class="name">S Ram Leisure Hotel</span><br/>
+          <span class="sub">SEA Games Guest Information</span>
+        </span>
+      </a>
+
+      <div class="top-links">
+        <a href="#services">Services</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#wifi">Wi-Fi</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="pill" href="#services">
+        <span class="dot"></span>
+        Guest Essentials
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero (new layout) -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="kicker">33rd SEA Games</div>
+        <h1 class="hero-title">Welcome Athletes and Officials</h1>
+        <p class="hero-sub">
+          It is our great honor to welcome you to the 33rd SEA Games and to have the privilege of hosting you
+          at <strong>S Ram Leisure Hotel</strong> during this special event.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="#services">View Service Hours</a>
+          <a class="btn btn-ghost" href="#wifi">Wi-Fi Details</a>
+        </div>
+      </div>
+
+      <div class="hero-image" role="img" aria-label="S Ram Leisure Hotel">
+        <span class="hero-image-badge">Your comfort, your focus</span>
+      </div>
+    </div>
+
+    <!-- Quick chips -->
+    <div class="chips">
+      <span class="chip"><strong>Reception</strong> • Press 0 • 24 Hours</span>
+      <span class="chip"><strong>S Cafe</strong> • Press 1009 • 06:00 - 23:00</span>
+      <span class="chip"><strong>Breakfast</strong> • 06:00 - 10:00</span>
+      <span class="chip"><strong>Room Service</strong> • Last Order 22:30</span>
+      <span class="chip"><strong>Laundry Privilege</strong> • 3 pieces/day/person</span>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Service Information</h2>
+      <p class="section-sub">
+        Key service hours and contact shortcuts for SEA Games athletes and officials.
+      </p>
+
+      <div class="info-grid">
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">S Cafe Restaurant</h3>
+            <span class="tag">Press 1009</span>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Opening Hours</div>
+              <div class="value">06:00 a.m. – 11:00 p.m.</div>
+            </div>
+            <div class="row">
+              <div class="label">Breakfast</div>
+              <div class="value">06:00 a.m. – 10:00 a.m.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Room Service</h3>
+            <span class="tag">In-Room Dining</span>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Service Hours</div>
+              <div class="value">06:00 a.m. – 11:00 p.m.</div>
+            </div>
+            <div class="row">
+              <div class="label">Last Order</div>
+              <div class="value">10:30 p.m.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Reception</h3>
+            <span class="tag">Press 0</span>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Availability</div>
+              <div class="value">Open 24 hours daily</div>
+            </div>
+          </div>
+          <div class="hint">
+            For any urgent assistance, schedule coordination, or service questions, please contact Reception.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3 class="panel-title">Laundry Service</h3>
+            <span class="tag">SEA Games Privilege</span>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Pick-up</div>
+              <div class="value">09:00 a.m.</div>
+            </div>
+            <div class="row">
+              <div class="label">Return</div>
+              <div class="value">Next day at 02:00 p.m.</div>
+            </div>
+            <div class="row">
+              <div class="label">Complimentary</div>
+              <div class="value">3 pieces/person/day</div>
+            </div>
+          </div>
+          <div class="hint">
+            Exclusively for SEA Games athletes and officials.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities" class="section" style="background: var(--soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <h2 class="section-title">Facilities</h2>
+      <p class="section-sub">
+        Simple, clear hours so you can plan training and recovery without guessing.
+      </p>
+
+      <div class="facility-strip">
+        <div class="facility-card">
+          <span class="tag">Facility</span>
+          <h4>Swimming Pool</h4>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Opening Hours</div>
+              <div class="value">06:00 a.m. – 10:00 p.m.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <span class="tag">Facility</span>
+          <h4>Fitness Centre</h4>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Opening Hours</div>
+              <div class="value">07:00 a.m. – 10:00 p.m.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Wi-Fi -->
+  <section id="wifi" class="section">
+    <div class="container">
+      <div class="wifi">
+        <div>
+          <small>Wi-Fi Access</small>
+          <h3>Stay Connected</h3>
+          <p>
+            Use the credentials provided by your team or Reception.
+            If credentials change during the event, the front desk will have the latest update.
+          </p>
+        </div>
+
+        <div class="wifi-box">
+          <div class="wifi-field">
+            <div class="f-label">Username</div>
+            <div class="f-value"> seagame </div>
+          </div>
+          <div class="wifi-field">
+            <div class="f-label">Password</div>
+            <div class="f-value"> 2025 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 class="panel-title">Our Warmest Welcome</h3>
+          <span class="tag">S Ram Leisure Hotel</span>
+        </div>
+        <div class="hint" style="font-size: 14px; color:#2c3133;">
+          On behalf of S Ram Leisure Hotel, we wish you a comfortable stay and outstanding success in the 33rd SEA Games.
+          If you need any assistance, please contact Reception by pressing <strong>0</strong>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-sign">S Ram Leisure Hotel</div>
+        <p>Reception: Press 0 • S Cafe Restaurant: Press 1009</p>
+        <p>Service hours may be adjusted based on operational or official event requirements.</p>
+      </div>
+      <div>
+        <div class="footer-sign">SEA Games Guest Info</div>
+        <p>This page is intended for SEA Games athletes and officials hosted by the hotel.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
